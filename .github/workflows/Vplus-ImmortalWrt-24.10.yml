@@ -191,16 +191,16 @@ jobs:
       run: |
         BUILD_TIME=$(date '+%Y-%m-%d %H:%M:%S')
         FIRMWARE_NAME=$(basename $(ls ./artifact/*.img.gz | head -n 1))
-        MESSAGE=$(cat <<EOF
-✅ *Vplus 固件编译成功！*
+        MESSAGE=$(cat <<-EOF
+        	✅ *Vplus 固件编译成功！*
 
-🧱 *固件名称*: ${GITHUB_WORKFLOW}
-🧬 *内核版本*: ${{ env.kernel_version }}
-📦 *OpenWrt 版本*: ${{ env.latest_release }}
-🗃️ *固件文件*: ${FIRMWARE_NAME}
-📅 *编译时间*: ${BUILD_TIME}
-EOF
-)
+        	📦 *固件名称*: ${GITHUB_WORKFLOW}
+        	🧬 *内核版本*: ${{ env.kernel_version }}
+        	🛠 *OpenWrt 版本*: ${{ env.latest_release }}
+        	🗃️ *固件文件*: ${FIRMWARE_NAME}
+        	📅 *编译时间*: ${BUILD_TIME}
+        EOF
+        )
 
         curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
           --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \

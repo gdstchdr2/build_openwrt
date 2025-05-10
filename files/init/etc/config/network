@@ -6,7 +6,6 @@ config interface 'loopback'
 	option netmask '255.0.0.0'
 
 config globals 'globals'
-	option ula_prefix 'fd7c:fe6:6d90::/48'
 	option packet_steering '1'
 
 config device
@@ -19,6 +18,14 @@ config interface 'lan'
 	option proto 'static'
 	option ipaddr '192.168.5.8'
 	option netmask '255.255.255.0'
-	list dns '211.136.192.6'
 	option ip6ifaceid 'eui64'
 	option ip6assign '64'
+	list dns '211.136.192.6'
+	list dns '4.2.2.2'
+
+config interface 'WAN'
+	option proto 'pppoe'
+	option device 'eth1'
+	option username '15876177225@139.gd'
+	option password '177225'
+	option ipv6 'auto'

@@ -108,10 +108,13 @@ config.experimental = {
     },
     cache_file: {
         enabled: true,
-        store_fakeip: (store_fakeip === '1') || null,
         store_rdrc: (store_rdrc === '1') || null
     }
 };
+
+if (exists(config.dns, 'fakeip')) {
+    config.experimental.cache_file.store_fakeip = config.dns.fakeip.enabled;
+}
 
 /* Inbounds */
 config.inbounds = [

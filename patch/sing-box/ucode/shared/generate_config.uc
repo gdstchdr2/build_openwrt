@@ -12,14 +12,14 @@ uci.load('sing-box');
 const conffile = uci.get('sing-box', 'main', 'conffile') || '/etc/sing-box/config.json',
       workdir = uci.get('sing-box', 'main', 'workdir') || '/etc/sing-box',
       remote = uci.get('sing-box', 'subscription', 'remote') || '1',
-      level = uci.get('sing-box', 'log', 'level') || 'info',
+      level = uci.get('sing-box', 'log', 'level') || 'warn',
+      log_file = uci.get('sing-box', 'log', 'log_file') || '0',
       output = uci.get('sing-box', 'log', 'output') || '/var/log/sing-box.log',
       external_controller_port  = uci.get('sing-box', 'experimental', 'external_controller_port') || '9900',
       external_ui = uci.get('sing-box', 'experimental', 'external_ui') || 'ui',
       secret = uci.get('sing-box', 'experimental', 'secret') || 'ffuqiangg',
       ui_name = uci.get('sing-box', 'experimental', 'ui_name') || 'metacubexd',
       default_mode = uci.get('sing-box', 'experimental', 'default_mode') || 'rule',
-      store_fakeip = uci.get('sing-box', 'experimental', 'store_fakeip') || '0',
       store_rdrc = uci.get('sing-box', 'experimental', 'store_rdrc') || '0',
       tproxy_port = uci.get('sing-box', 'inbounds', 'tproxy_port') || '10105',
       mixed_port = uci.get('sing-box', 'inbounds', 'mixed_port') || '2881',
@@ -89,7 +89,7 @@ const config = {};
 config.log = {
     disabled: false,
     level: level,
-    output: output,
+    output: (log_file === '1') ? output : null,
     timestamp: true
 };
 

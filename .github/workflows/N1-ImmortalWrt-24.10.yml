@@ -199,7 +199,7 @@ jobs:
         	✅ *N1 固件编译成功！*
 
         	📦 *固件名称*: ${GITHUB_WORKFLOW}
-        	🧬 *内核版本*: ${{ env.kernel_version }}
+        	🧬 *内核版本*: ${KERNEL_VERSIONS}
         	🛠 *OpenWrt 版本*: ${{ env.latest_release }}
         	🗃️ *固件文件*: ${FIRMWARE_NAME}
         	📅 *编译时间*: ${BUILD_TIME}
@@ -208,7 +208,7 @@ jobs:
 
         curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
           -d chat_id="${TELEGRAM_CHAT_ID}" \
-          -d parse_mode="MarkdownV2" \
+          -d parse_mode="Markdown" \
           -d text="$MESSAGE"
            
     - name: 删除旧的 Workflow Runs（保留最近 3 次）

@@ -6,7 +6,7 @@
 - 账户: root
 - 密码: password
 
-### 固件差异
+### 编译插件
 
 | 固件版本         | PassWall | FileBrowser | HomeProxy | Nikki | KMS | zerotier | ddns-go |
 |------------------|:--------:|:-----------:|:---------:|:-----:|:---:|:--------:|:-------:|
